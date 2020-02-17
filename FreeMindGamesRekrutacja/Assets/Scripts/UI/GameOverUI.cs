@@ -28,5 +28,10 @@ namespace FreeMindRekru.UI
         {
             score.text = newScore.ToString();
         }
+
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
     }
 }
