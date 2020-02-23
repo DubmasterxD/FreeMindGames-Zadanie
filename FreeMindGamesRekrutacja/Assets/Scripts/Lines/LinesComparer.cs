@@ -131,12 +131,12 @@ namespace FreeMindRekru.Lines
 
         private bool AreLinesSimilarEnough(Vector3[] comparingLine, Vector3[] modelLine, float averageDistancesBetweenLines)
         {
-            return averageDistancesBetweenLines <= maxAverageDistance && IsPointCloseToLineEnd(comparingLine[0], modelLine) && IsPointCloseToLineEnd(comparingLine[comparingLine.Length - 1], modelLine);
+            return averageDistancesBetweenLines <= maxAverageDistance && AreEndsCloseEnough(comparingLine, modelLine);
         }
 
-        private bool IsPointCloseToLineEnd(Vector3 comparingPoint, Vector3[] modelLine)
+        private bool AreEndsCloseEnough(Vector3[] comparingLine, Vector3[] modelLine)
         {
-            return Vector3.Distance(comparingPoint, modelLine[0]) <= maxDistance || Vector3.Distance(comparingPoint, modelLine[modelLine.Length - 1]) <= maxDistance;
+            return Vector3.Distance(comparingLine[0], modelLine[0]) <= maxDistance && Vector3.Distance(comparingLine[comparingLine.Length - 1], modelLine[modelLine.Length - 1]) <= maxDistance;
         }
     }
 }

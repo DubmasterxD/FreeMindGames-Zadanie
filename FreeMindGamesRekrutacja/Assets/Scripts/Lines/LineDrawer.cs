@@ -16,6 +16,7 @@ namespace FreeMindRekru.Lines
 
         protected override void OnAwake()
         {
+            base.OnAwake();
             gameManager = FindObjectOfType<GameManager>();
             gameManager.onGameStarted += GameStarted;
             gameManager.onGameOver += GameOver;

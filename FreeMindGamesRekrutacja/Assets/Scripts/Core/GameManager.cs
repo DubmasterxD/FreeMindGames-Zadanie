@@ -5,7 +5,9 @@ namespace FreeMindRekru.Core
 {
     public class GameManager : MonoBehaviour
     {
-        public float timeToDraw = 1f;
+        public float timeTothink = .2f;
+        public float baseTimeToDraw = 1f;
+        public float baseLineLength = 3f;
         public int startingLives = 3;
 
         public int score { get; private set; } = 0;
@@ -28,7 +30,6 @@ namespace FreeMindRekru.Core
 
                 if (timeLeft <= 0)
                 {
-                    timeLeft = 0;
                     onTimeEnd();
                 }
             }
@@ -37,7 +38,6 @@ namespace FreeMindRekru.Core
         public void StartGame()
         {
             isPlaying = true;
-            ResetTimer();
             livesLeft = startingLives;
             score = 0;
             if (onGameStarted != null)
@@ -50,30 +50,26 @@ namespace FreeMindRekru.Core
         {
             score++;
             onPointGain();
-            ResetTimer();
         }
 
         public void LooseLife()
         {
             livesLeft--;
-            onLooseLife();
             if (livesLeft <= 0)
             {
                 GameOver();
             }
-            else
-            {
-                ResetTimer();
-            }
+            onLooseLife();
         }
 
-        private void ResetTimer()
+        public void ResetTimer(float lineLength)
         {
-            timeLeft = timeToDraw;
+            timeLeft = timeTothink + baseTimeToDraw * lineLength / baseLineLength;
         }
 
         public void GameOver()
         {
+            isPlaying = false;
             if (onGameOver != null)
             {
                 onGameOver(score);

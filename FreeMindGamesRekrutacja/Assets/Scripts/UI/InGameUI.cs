@@ -8,22 +8,15 @@ namespace FreeMindRekru.UI
     {
         [SerializeField] Text score = null;
         [SerializeField] Text lives = null;
-        [SerializeField] Slider timer = null;
 
         GameManager gameManager;
 
         private void Awake()
         {
             gameManager = FindObjectOfType<GameManager>();
-            SetTimer(gameManager.timeToDraw);
             gameManager.onGameStarted += GameStarted;
             gameManager.onLooseLife += LooseLife;
             gameManager.onPointGain += AddPoint;
-        }
-
-        private void Update()
-        {
-            UpdateTimer(gameManager.timeLeft);
         }
 
         private void GameStarted()
@@ -50,16 +43,6 @@ namespace FreeMindRekru.UI
         public void UpdateLives(float newLives)
         {
             lives.text = newLives.ToString();
-        }
-
-        public void SetTimer(float maxTime)
-        {
-            timer.maxValue = maxTime;
-        }
-
-        public void UpdateTimer(float newTime)
-        {
-            timer.value = newTime;
         }
     }
 }
