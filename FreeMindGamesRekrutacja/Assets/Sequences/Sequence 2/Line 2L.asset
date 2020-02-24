@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e91d09601f6679d4a8636c7143686d57, type: 3}
-  m_Name: Line
+  m_Name: Line 2L
   m_EditorClassIdentifier: 
-  linePrefab: {fileID: 550470677505809709, guid: df021ef5bc9fee34aa44ce93fef7b59b,
-    type: 3}
   bezierPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: -0.1430254, y: 2.8402572, z: -1.3172827}
+  - {x: -0.07216872, y: 2.849238, z: -1.2983059}
+  - {x: -0.04067696, y: 2.864954, z: -1.2650965}
+  - {x: -0.04330118, y: 2.919961, z: -1.1488638}

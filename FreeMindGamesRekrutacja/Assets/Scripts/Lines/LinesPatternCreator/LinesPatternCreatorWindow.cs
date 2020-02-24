@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace FreeMindRekru.Lines.PatternCreator
 {
+#if UNITY_EDITOR
     public class LinesPatternCreatorWindow : EditorWindow
     {
         LinesPatternCreatorVisualizer visualizer;
@@ -13,7 +14,7 @@ namespace FreeMindRekru.Lines.PatternCreator
         static void OpenWindow()
         {
             LinesPatternCreatorWindow window = (LinesPatternCreatorWindow)GetWindow(typeof(LinesPatternCreatorWindow));
-            window.minSize = new Vector2(200, 200);
+            window.minSize = new Vector2(300, 200);
             window.Show();
         }
 
@@ -25,12 +26,13 @@ namespace FreeMindRekru.Lines.PatternCreator
                 if (GUILayout.Button("Create new sequence"))
                 {
                     CreateNewSequence();
-                }
+                }                
                 if (sequence != null)
                 {
                     line = (Line)EditorGUILayout.ObjectField("Line", line, typeof(Line), false);
                     if (GUILayout.Button("Create new line"))
                     {
+                        SaveLine();
                         CreateNewLine();
                         AddLineToSequence();
                     }
@@ -74,8 +76,15 @@ namespace FreeMindRekru.Lines.PatternCreator
         private void CreateNewLine()
         {
             line = CreateInstance<Line>();
-            string path = AssetDatabase.GenerateUniqueAssetPath("Assets/Sequences/" + sequence.name + "/Line.asset");
-            AssetDatabase.CreateAsset(line, path);
+        }
+
+        private void SaveLine()
+        {
+            if (line != null)
+            {
+                string path = AssetDatabase.GenerateUniqueAssetPath("Assets/Sequences/" + sequence.name + "/Line.asset");
+                AssetDatabase.CreateAsset(line, path);
+            }
         }
 
         private void AddLineToSequence()
@@ -83,4 +92,5 @@ namespace FreeMindRekru.Lines.PatternCreator
             sequence.lines.Add(line);
         }
     }
+#endif
 }

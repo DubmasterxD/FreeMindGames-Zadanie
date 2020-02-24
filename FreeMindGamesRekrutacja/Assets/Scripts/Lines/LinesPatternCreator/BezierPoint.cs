@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
-public class BezierPoint : MonoBehaviour
+namespace FreeMindRekru.Lines.PatternCreator
 {
-    Camera mainCam;
-
-    private void Awake()
+    public class BezierPoint : MonoBehaviour
     {
-        mainCam = Camera.main;
-    }
+        Camera mainCam;
 
-    void Update()
-    {
-        transform.LookAt(mainCam.transform);
+        private void Awake()
+        {
+            mainCam = Camera.main;
+        }
+
+        void Update()
+        {
+            transform.LookAt(mainCam.transform);
+        }
     }
 }

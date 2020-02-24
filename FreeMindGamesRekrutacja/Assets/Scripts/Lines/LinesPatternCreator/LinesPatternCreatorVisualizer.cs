@@ -45,6 +45,13 @@ namespace FreeMindRekru.Lines.PatternCreator
             }
         }
 
+        public void RandomizePoints()
+        {
+            DestroyLine();
+            GenerateRandomBezierPoints();
+            SetBezierPointsObjects();
+        }
+
         private void AttachMovingPoint(Transform pointHitTransform)
         {
             if (pointHitTransform != null)
@@ -95,14 +102,5 @@ namespace FreeMindRekru.Lines.PatternCreator
                 bezierPoints[i] = bezierPointsObjects[i].transform.position;
             }
         }
-
-        //public void AssignBezierPoints(Vector3[] newPoints)
-        //{
-        //    points = newPoints;
-        //    for(int i=0; i < points.Length; i++)
-        //    {
-        //        bezierPoints[i].transform.position = points[i];
-        //    }
-        //}
     }
 }

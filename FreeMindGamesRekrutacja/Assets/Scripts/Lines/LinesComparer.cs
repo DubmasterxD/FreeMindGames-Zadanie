@@ -3,19 +3,18 @@ using UnityEngine;
 
 namespace FreeMindRekru.Lines
 {
-    [RequireComponent(typeof(LineDrawer), typeof(LinesGenerator))]
+    [RequireComponent(typeof(LineDrawer))]
     public class LinesComparer : MonoBehaviour
     {
         [SerializeField] float maxDistance = 4;
         [SerializeField] float maxAverageDistance = .5f;
-
-        LinesGenerator linesGenerator;
+        [SerializeField] LineCreator lineModeler = null;
+        
         LineDrawer lineDrawer;
         GameManager gameManager;
 
         private void Awake()
         {
-            linesGenerator = GetComponent<LinesGenerator>();
             lineDrawer = GetComponent<LineDrawer>();
             gameManager = FindObjectOfType<GameManager>();
             lineDrawer.onFinishDrawLine += CompareLines;
@@ -26,9 +25,9 @@ namespace FreeMindRekru.Lines
             Vector3[] drawnLinePositions = lineDrawer.GetLinePoints();
             if (drawnLinePositions.Length > 0)
             {
-                Vector3[] generatedLinePositions = linesGenerator.GetLinePoints();
-                float averageDistancesBetweenLines = GetAverageDistancesBetweenLines(drawnLinePositions, generatedLinePositions);
-                if (AreLinesSimilarEnough(drawnLinePositions, generatedLinePositions, averageDistancesBetweenLines))
+                Vector3[] modelLinePositions = lineModeler.GetLinePoints();
+                float averageDistancesBetweenLines = GetAverageDistancesBetweenLines(drawnLinePositions, modelLinePositions);
+                if (AreLinesSimilarEnough(drawnLinePositions, modelLinePositions, averageDistancesBetweenLines))
                 {
                     gameManager.AddPoint();
                 }

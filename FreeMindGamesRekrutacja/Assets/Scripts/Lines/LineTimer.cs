@@ -25,7 +25,7 @@ namespace FreeMindRekru.Lines
         {
             if (gameManager.isPlaying)
             {
-                UpdateLine(GetPositionFromTime(timeToDraw - gameManager.timeLeft));
+                UpdateLineFromTime(timeToDraw - gameManager.timeLeft);
             }
         }
 
@@ -39,18 +39,17 @@ namespace FreeMindRekru.Lines
             CreateLine(line[0]);
         }
 
-        private Vector3 GetPositionFromTime(float time)
+        private void UpdateLineFromTime(float time)
         {
             float targetLength = lineLength * time / timeToDraw;
             float nextPointLength = lastVisitedPointLength + Vector3.Distance(modelLinePositions[lastVisitedPointIndex], modelLinePositions[lastVisitedPointIndex + 1]);
             while (nextPointLength <= targetLength)
             {
+                UpdateLine(modelLinePositions[lastVisitedPointIndex]);
                 lastVisitedPointIndex++;
                 lastVisitedPointLength = nextPointLength;
                 nextPointLength += Vector3.Distance(modelLinePositions[lastVisitedPointIndex], modelLinePositions[lastVisitedPointIndex + 1]);
             }
-            float lerpPoint = (targetLength - lastVisitedPointLength) / (nextPointLength - lastVisitedPointLength);
-            return Vector3.Lerp(modelLinePositions[lastVisitedPointIndex], modelLinePositions[lastVisitedPointIndex + 1], lerpPoint);
         }
     }
 }

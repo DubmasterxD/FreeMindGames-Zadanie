@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91d09601f6679d4a8636c7143686d57, type: 3}
+  m_Name: Line 2L
+  m_EditorClassIdentifier: 
+  bezierPoints:
+  - {x: -0.05117416, y: 3.040078, z: -0.8950493}
+  - {x: -0.08004171, y: 3.0580392, z: -0.85709625}
+  - {x: -0.148274, y: 3.0614069, z: -0.8499799}
+  - {x: -0.1902631, y: 3.0557942, z: -0.86184007}

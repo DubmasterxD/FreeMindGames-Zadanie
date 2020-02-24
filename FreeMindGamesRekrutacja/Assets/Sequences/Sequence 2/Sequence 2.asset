@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 818dca532d7cdb24e8ec07f8ac29bb85, type: 3}
-  m_Name: Sequence
+  m_Name: Sequence 2
   m_EditorClassIdentifier: 
   lines:
-  - {fileID: 11400000, guid: 34cd302580cc200408184c7037b54e7d, type: 2}
-  - {fileID: 11400000, guid: d9a13e60c5cb26c4bbff890cb548db33, type: 2}
+  - {fileID: 11400000, guid: 0b9d3bdd155ccaa458ba8acf7c79bf81, type: 2}
+  - {fileID: 11400000, guid: cbe8ebfee12fbb746b2c6068879e6308, type: 2}
+  - {fileID: 11400000, guid: 14beb839549671d42bc3b7b485b722cf, type: 2}
+  - {fileID: 11400000, guid: 121b69aa312dbd04093651f4f5ce4919, type: 2}
